@@ -1,9 +1,10 @@
-- // ==============================================
-- // Program Name : Ideal Gas Calculator
-- // Author       : [b0zk1r] Tunga Kaya
-- // Released     : May 15, 2025
-- // Language     : MATLAB
-- // ==============================================
+/* ==============================================
+   Program Name : Ideal Gas Calculator
+   Author       : [b0zk1r] Tunga Kaya
+   Released     : May 15, 2025
+   Language     : MATLAB
+   ============================================== */
+   
 A simple MATLAB tool to calculate one missing variable (P, V, n, or T) using the ideal gas law:
 
 \[
