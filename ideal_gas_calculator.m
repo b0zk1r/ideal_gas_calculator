@@ -41,18 +41,15 @@ function ideal_gas_calculator()
     end
 end
 
-function y = round_sigfig(x, n)
-    if x == 0
-        y = 0;
-    else
-        digits = floor(log10(abs(x))) + 1; 
-        factor = 10^(n - digits);
-        y = round(x * factor) / factor;
-    end
+function sf = count_sigfig(val)   % Counts the significant figures of each input
+    str = sprintf('%.16g', val);  % Write the number in decimal format with up to 16 significant figures
+    str(str == '.') = '';         % Remove the decimal point
+    str(str == '-') = '';         % If present remove the minus siign
+    str(str == '0') = ' ';        % Replace zeros with spaces to help remove consecutive zeros
+    sf = length(strtrim(str));
 end
 
-function min_sf = min_sigfig(values)
-    % Finds the least significant figures
+function min_sf = min_sigfig(values) % Finds the least significant figures
     min_sf = inf;
     for i = 1:length(values)
         val = values(i);
@@ -63,10 +60,13 @@ function min_sf = min_sigfig(values)
     end
 end
 
-function sf = count_sigfig(val)
-    str = sprintf('%.16g', val);  % Write the number in decimal format with up to 16 significant figures
-    str(str == '.') = '';         % Remove the decimal point
-    str(str == '-') = '';         % If present remove the minus siign
-    str(str == '0') = ' ';        % Replace zeros with spaces to help remove consecutive zeros
-    sf = length(strtrim(str));
+function y = round_sigfig(x, n) % Rounds to least significant figures
+    if x == 0
+        y = 0;
+    else
+        digits = floor(log10(abs(x))) + 1; 
+        factor = 10^(n - digits);
+        y = round(x * factor) / factor;
+    end
 end
+
