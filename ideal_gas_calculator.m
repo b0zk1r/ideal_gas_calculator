@@ -10,6 +10,13 @@ function ideal_gas_calculator()
     V = input('Enter volume V (or leave empty as [] if unknown): ');
     n = input('Enter amount of substance n (or leave empty as [] if unknown): ');
     T = input('Enter temperature T (or leave empty as [] if unknown): ');
+    
+    % check for exactly one unknown
+    known = [~isempty(P), ~isempty(V), ~isempty(n), ~isempty(T)];
+ if sum(known) ~= 3
+    error('Please provide exactly 3 known values and leave 1 as [].');
+ end
+
 
     % Ideal Gas Law Calculation
     if isempty(P)
