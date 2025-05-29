@@ -1,3 +1,5 @@
+clear
+clc
 function ideal_gas_calculator()
     clc;
     disp('--- Ideal Gas Calculator ---');
